@@ -1,0 +1,63 @@
+# Name of application (make sure it has no spaces)
+name: "pybbs"
+
+# Domain of application (e.g. com.example)
+domain: "co.yiiu.pybbs"
+
+# Display name of application (can have spaces)
+# Usually also the application directory for Windows/Mac OSX (e.g. Program Files\Hello Server)
+display_name: "pybbs Server"
+
+short_description: "pybbs Server"
+
+# Type of launcher (CONSOLE or DAEMON)
+type: DAEMON
+
+# Java class to run
+main_class: "co.yiiu.pybbs.PybbsApplication"
+
+# Platform launchers to generate (WINDOWS, LINUX, MAC_OSX)
+platforms: [ WINDOWS, MAC_OSX, LINUX ]
+
+# Working directory for app
+#  RETAIN will not change the working directory
+#  APP_HOME will change the workding directory to the home of the app
+#working_dir_mode: APP_HOME
+
+# Arguments for application (as though user typed them on command-line)
+# These will be added immediately after the main class part of java command
+# app_args: ""
+app_args: "--spring.config.additional-location=file:conf/"
+
+
+# Arguments to use with the java command (e.g. way to pass -D arguments)
+# "-Xrs" is good to include with daemons
+java_args: "-Xrs"
+
+# minimum version of java required (system will be searched for acceptable jvm)
+min_java_version: "1.8"
+
+# min/max fixed memory (measured in MB)
+min_java_memory: 1024
+max_java_memory: 2048
+
+# min/max memory by percentage of system
+#min_java_memory_pct: 10
+#max_java_memory_pct: 30
+
+platform_configurations:
+  LINUX:
+    daemon_method: NOHUP
+    user: "bbs"
+    group: "bbs"
+
+  MAC_OSX:
+    user: "_daemon"
+    group: "_daemon"
+
+  WINDOWS:
+    daemon_method: JSLWIN
+
+symlink_java: true
+
+#run_dir: /var/run

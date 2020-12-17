@@ -1,8 +1,8 @@
 server:
-  port: 8080
+  port: 7040
 spring:
   profiles:
-    active: dev
+    active: swagger
   banner:
     location: ["classpath:banner.txt", "file:./banner.txt"]
   freemarker:
@@ -28,3 +28,4 @@ mybatis-plus:
   mapper-locations: classpath:/*Mapper.xml
   global-config:
     banner: false
+

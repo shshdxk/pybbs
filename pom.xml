@@ -6,7 +6,7 @@
     <groupId>co.yiiu</groupId>
     <artifactId>pybbs</artifactId>
     <version>5.2.1</version>
-    <packaging>jar</packaging>
+<!--    <packaging>pom</packaging>-->
 
     <name>pybbs</name>
     <description>更实用的Java语言开发的论坛</description>
@@ -204,7 +204,7 @@
 
     <build>
 
-        <finalName>pybbs</finalName>
+<!--        <finalName>pybbs</finalName>-->
 
         <resources>
             <resource>
@@ -220,13 +220,13 @@
         </resources>
 
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <layout>ZIP</layout>
-                </configuration>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--                <configuration>-->
+<!--                    <layout>ZIP</layout>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
             <!-- 打包发布时，跳过单元测试 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -235,7 +235,30 @@
                     <skipTests>true</skipTests>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>com.fizzed</groupId>
+                <artifactId>stork-maven-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <id>stork-launcher</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>launcher</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>stork-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>assembly</goal>
+                        </goals>
+                        <configuration>
+                            <finalName>pybbs-${project.version}</finalName>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
-
 </project>
